@@ -12,7 +12,7 @@ app.use(cors()); /* To avoid cross origin error */
 
 app.use(express.json());
 
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT;
 const URL = process.env.MONGODB_URL;
 
 const mongoose = require("mongoose");
@@ -25,21 +25,7 @@ mongoose.connect(URL, {
 const connection = mongoose.connection;
 connection.on("open", () => console.log("MongoDB Connected"));
 
-app.get("/", (req, res) =>
-  res.send(`
-<div>
-<p> In Home Page </p>
-<p>To get all mentor List - https://zen-assign-mentors.herokuapp.com/Mentors </p>
-<br>
-<p>To get all Students List - https://zen-assign-mentors.herokuapp.com/Students </p>
-<br>
-<p>To get mentor based on ID - https://zen-assign-mentors.herokuapp.com/Mentors/get-mentor/:id<p>
-<p>sample - https://zen-assign-mentors.herokuapp.com/Mentors/get-mentor/60e7f515d5ff5342a06652e3 </p>
-
-<p> To test Post and update - visit Frontend page of the application - https://preethi-st.github.io/ZEN-Mentors-Frontend/ </p>
-</div>
-`)
-);
+app.get("/", (req, res) => res.send(`Server running successfully`));
 
 app.use("/Mentors", mentorRouter);
 app.use("/Students", studentRouter);
